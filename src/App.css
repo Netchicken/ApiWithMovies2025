@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "montserrat", sans-serif;
+  background-image: linear-gradient(45deg, #aaa, #223343);
+  min-height: 100vh;
+}
+
+header {
+  padding: 50px 15px 0px;
+}
+
+header h1 {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 500;
+  text-align: center;
+}
+header h4 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 200;
+  text-align: center;
+}
+main {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 15px;
+}
+
+.searchbox {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  max-width: 990px;
+  border: none;
+  outline: none;
+  background: none;
+
+  background-color: #eee;
+  border-radius: 8px;
+
+  color: #53565a;
+  font-size: 20px;
+  font-weight: 300;
+
+  transition: 0.4s ease-out;
+}
+
+.searchbox:focus {
+  box-shadow: 0px 0px 8px 3px #4484c4;
+}
+
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px -10px;
+}
+/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ 
+https://css-tricks.com/creating-animated-clickable-cards-with-the-has-relational-pseudo-class/
+*/
+.results .result {
+  display: block;
+  max-width: 330px;
+  margin-inline: auto;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0px 0px 8px 3px #4484c4;
+  /* background: #fff; */
+  transform-origin: center center;
+  transition: all 0.4s ease-in-out;
+  text-decoration: none;
+  color: black;
+  transform-origin: center center;
+  transition: all 0.4s ease-in-out;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.results .result img {
+  transform-origin: center;
+  transition: transform 0.4s ease-in-out;
+}
+.results .result:hover img,
+.results .result:focus img {
+  transform: scale(1.1);
+}
+
+.results .result h3 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px;
+  /* background: #445565; */
+  flex: auto;
+  transition: 0.4s ease-out;
+}
+
+.results .result:hover h3 {
+  background: #1e3a53;
+  color: #e0c74b9f;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #445565;
+
+  overflow-y: scroll;
+}
+
+.popup .content {
+  /* display: block; */
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 25px;
+
+  color: #fff;
+}
+
+.popup .content h2 {
+  font-size: 28px;
+  font-weight: 600;
+}
+.popup .content h2 span {
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.popup .content .rating {
+  margin-bottom: 30px;
+}
+
+.popup .content .plot {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px -15px 30px;
+}
+
+.popup .content img {
+  transform-origin: center;
+  transition: transform 0.4s ease-in-out;
+  box-shadow: 0px 0px 8px 3px #4484c4;
+}
+.popup .content .plot:hover img {
+  transform: scale(1.1);
+}
+.popup .content .plot p {
+  flex: 1 1 50%;
+  padding: 15px;
+
+  margin: 0 0 18px 0;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.9rem;
+  letter-spacing: 0.06em;
+  transition: color 0.3s ease-out;
+}
+
+.popup .content .close {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: 700;
+
+  background: #4484c4;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+
+  transition: 0.4s ease-out;
+}
+
+.popup .content .close:hover {
+  background: #223343;
+}
+
+
