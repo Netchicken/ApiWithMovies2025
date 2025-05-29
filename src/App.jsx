@@ -55,7 +55,7 @@ function App() {
       </header>
       <main>
         {/* Pass handlers and state to the Search component */}
-        <div className="row justify-content-center mb-4">
+        <div className="row justify-content-center mb-6">
           <div className="col-md-8">
             <Search handleInput={handleInput} search={searchCall} />
           </div>
