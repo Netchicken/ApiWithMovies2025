@@ -63,7 +63,8 @@ section {
   box-shadow: 0px 0px 8px 3px #4484c4;
 }
 
-Results grid using Bootstrap flex utilities .results {
+/* Results grid using Bootstrap flex utilities  */
+.results {
   display: flex;
   flex-wrap: wrap;
   margin: 0px -10px;
@@ -96,7 +97,7 @@ Results grid using Bootstrap flex utilities .results {
   transform: scale(1.1);
 }
 
-.results .result h3 {
+/* .results .result h3 {
   color: #223343;
   font-size: 20px;
   font-weight: 600;
@@ -108,7 +109,7 @@ Results grid using Bootstrap flex utilities .results {
 .results .result:hover h3 {
   background: #1e3a53;
   color: #e0c74b9f;
-}
+} */
 
 /* Popup modal styling */
 .popup {
@@ -121,8 +122,9 @@ Results grid using Bootstrap flex utilities .results {
   overflow-y: auto;
   z-index: 1050;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Changed from center to flex-start */
   justify-content: center;
+  padding-top: 40px; /* Add padding to push content down */
 }
 
 .popup .content {
@@ -168,7 +170,7 @@ Results grid using Bootstrap flex utilities .results {
   transform: scale(1.1);
 }
 
-.popup .content .plot p {
+/* .popup .content .plot p {
   flex: 1 1 50%;
   padding: 15px;
   margin: 0 0 18px 0;
@@ -176,7 +178,7 @@ Results grid using Bootstrap flex utilities .results {
   font-size: 1.9rem;
   letter-spacing: 0.06em;
   transition: color 0.3s ease-out;
-}
+} */
 
 .popup .content .close {
   display: inline-block;
