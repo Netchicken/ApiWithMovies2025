@@ -5,7 +5,7 @@ const apiUrl = "https://www.omdbapi.com/?apikey=9189dcef";
 
 export function useApiSearch() {
   //useState is a React Hook that lets you add state to function components.
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -31,25 +31,8 @@ export function useApiSearch() {
   return { results, loading, error, searchMovies };
 }
 
-//   return new Promise((resolve, reject) => {
-//     //if no method is provided, GET will be used as the default value.
-//     axios
-//       .get(searchUrl)
-//       .then(({ data }) => {
-//         console.log("ApiResult raw data", data);
-//         //don't forget {data} to deconstruct down to the data layer else use data.data
-//         const result = data.Search;
-//         console.log("Api Result search ", result);
-//         resolve(result);
-//         return;
-//       })
-//       .catch((err) => {
-//         reject(err.message);
-//         return;
-//       });
-//   });
-// };
-
+/// This function is used to open a popup with the details of a movie when clicked.
+// It takes the movie ID as a parameter and returns a promise that resolves with the movie details.
 export const apiOpenPopup = (id) => {
   let searchUrl = apiUrl + "&i=" + id;
 
