@@ -1,49 +1,45 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Search } from "./Components/Search";
-import { useApiSearch, apiOpenPopup } from "./Utilities/Api";
+import { useApiSearch, useApiOpenPopup } from "./Utilities/Api";
 import { Results } from "./Components/Results";
 import { Popup } from "./Components/Popup";
 
 function App() {
   // State for the search input value
-  const [search, setSearch] = useState(""); //the search term for the movie
-  // State for the currently selected movie (for popup)
-  const [selected, setSelected] = useState(""); //show the popup if true
+  const [search, setSearch] = useState(""); // the search term for the movie
+
   // Custom hook to handle movie search API logic
-  // const { results, loading, error, searchMovies } = useApiSearch();
+  const { results, loading, error, searchMovies } = useApiSearch();
+
+  // Custom hook to handle popup movie details pass data from API
+  const {
+    movie: selected,
+    loading: popupLoading,
+    error: popupError,
+    fetchMovie,
+  } = useApiOpenPopup();
 
   // Handle input changes in the search box
   const handleInput = (event) => {
     setSearch(event.target.value);
-    console.log(search);
   };
 
   // Trigger search when the Enter key is pressed
   const searchCall = (event) => {
-    console.log("searchCall ", event);
     if (event.key === "Enter") {
       searchMovies(search); // Call the search function from the custom hook
-      return results;
     }
   };
 
   // Open the popup with movie details by fetching data from the API
   const openPopup = (id) => {
-    apiOpenPopup(id)
-      .then((result) => {
-        console.log("Api apiOpenPopup ", result);
-        setSelected(result);
-      })
-      .catch((error) => {
-        console.log("Api Search error ", error);
-      });
+    fetchMovie(id);
   };
 
   // Close the popup by clearing the selected movie
   const closePopup = () => {
-    setSelected("");
-    return { selected };
+    fetchMovie(null); // Optionally reset the movie in the hook, or you can add a reset function to the hook
   };
 
   return (
@@ -68,7 +64,7 @@ function App() {
           </div>
         </div>
         {/* Conditionally render the Popup if a movie is selected */}
-        {typeof selected.Title !== "undefined" ? (
+        {selected && typeof selected.Title !== "undefined" ? (
           <Popup selected={selected} closePopup={closePopup} />
         ) : null}
         {/* Show loading and error messages */}
@@ -80,28 +76,18 @@ function App() {
             Error: {error}
           </div>
         )}
+        {popupLoading && (
+          <div className="alert alert-info text-center mt-3">
+            Loading details...
+          </div>
+        )}
+        {popupError && (
+          <div className="alert alert-danger text-center mt-3">
+            Error: {popupError}
+          </div>
+        )}
       </main>
     </div>
-
-    // <div>
-    //   <header>
-    //     <h1>Movie Database</h1>
-    //     <h4>Search and then click on a Movie to see the plot</h4>
-    //   </header>
-    //   <main>
-    //     {/* Pass handlers and state to the Search component */}
-    //     <Search handleInput={handleInput} search={searchCall} />
-    //     {/* Pass search results and popup handler to Results */}
-    //     <Results resultData={results} openPopup={openPopup} />
-    //     {/* Conditionally render the Popup if a movie is selected */}
-    //     {typeof selected.Title != "undefined" ? (
-    //       <Popup selected={selected} closePopup={closePopup} />
-    //     ) : null}
-    //     {/* Show loading and error messages */}
-    //     {loading && <div>Loading...</div>}
-    //     {error && <div>Error: {error}</div>}
-    //   </main>
-    // </div>
   );
 }
 
