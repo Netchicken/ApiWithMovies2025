@@ -33,22 +33,29 @@ export function useApiSearch() {
 
 /// This function is used to open a popup with the details of a movie when clicked.
 // It takes the movie ID as a parameter and returns a promise that resolves with the movie details.
-export const apiOpenPopup = (id) => {
-  let searchUrl = apiUrl + "&i=" + id;
+/**
+ * Custom hook to fetch movie details by ID (for popup)
+ * Returns: { movie, loading, error, fetchMovie }
+ */
+export function useApiOpenPopup() {
+  const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  return new Promise((resolve, reject) => {
-    //if no method is provided, GET will be used as the default value.
-    axios
-      .get(searchUrl)
-      .then(({ data }) => {
-        const result = data;
-        console.log("Api apiOpenPopup ", result);
-        resolve(result);
-        return;
-      })
-      .catch((err) => {
-        reject(err.message);
-        return;
-      });
-  });
-};
+  // Memoized function to fetch movie details
+  const fetchMovie = useCallback(async (id) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const { data } = await axios.get(`${apiUrl}&i=${id}`);
+      setMovie(data);
+      console.log("Api apiOpenPopup ", data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  return { movie, loading, error, fetchMovie };
+}

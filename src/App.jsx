@@ -11,7 +11,7 @@ function App() {
   // State for the currently selected movie (for popup)
   const [selected, setSelected] = useState(""); //show the popup if true
   // Custom hook to handle movie search API logic
-  const { results, loading, error, searchMovies } = useApiSearch();
+  // const { results, loading, error, searchMovies } = useApiSearch();
 
   // Handle input changes in the search box
   const handleInput = (event) => {
@@ -21,6 +21,7 @@ function App() {
 
   // Trigger search when the Enter key is pressed
   const searchCall = (event) => {
+    console.log("searchCall ", event);
     if (event.key === "Enter") {
       searchMovies(search); // Call the search function from the custom hook
       return results;
@@ -48,7 +49,7 @@ function App() {
   return (
     <div className="container py-4">
       <header className="mb-4">
-        <h1 className="display-4 text-center">Movie Database</h1>
+        <h1 className="display-4 text-center">2025 Movie Database</h1>
         <h4 className="text-center ">
           Search and then click on a Movie to see the plot
         </h4>
