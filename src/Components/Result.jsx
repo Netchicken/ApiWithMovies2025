@@ -2,9 +2,9 @@ import React from "react";
 
 export const Result = ({ result, openPopup }) => {
   return (
-    <div className="col-md-4 mb-4">
+    <div className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
       <div
-        className="card h-100 shadow-sm result"
+        className="card h-100 shadow-sm result "
         style={{ cursor: "pointer" }}
         onClick={() => openPopup(result.imdbID)}
       >

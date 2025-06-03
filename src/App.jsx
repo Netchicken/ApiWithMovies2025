@@ -53,16 +53,14 @@ function App() {
       </header>
       <main>
         {/* Pass handlers and state to the Search component */}
-        <div className="row justify-content-center mb-6">
+        <div className="row justify-content-center mb-">
           <div className="col-md-8">
             <Search handleInput={handleInput} search={searchCall} />
           </div>
         </div>
         {/* Pass search results and popup handler to Results */}
         <div className="row">
-          <div className="col-12">
-            <Results resultData={results} openPopup={openPopup} />
-          </div>
+          <Results resultData={results} openPopup={openPopup} />
         </div>
         {/* Conditionally render the Popup if a movie is selected */}
         {selected && typeof selected.Title !== "undefined" ? (
