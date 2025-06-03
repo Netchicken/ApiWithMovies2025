@@ -12,7 +12,7 @@ function App() {
   // Custom hook to handle movie search API logic
   const { results, loading, error, searchMovies } = useApiSearch();
 
-  // Custom hook to handle popup movie details pass data from API
+  // local variable using Object destructuring to hold Custom hook to handle popup movie details pass data from API
   const {
     movie: selected,
     loading: popupLoading,
@@ -29,6 +29,7 @@ function App() {
   const searchCall = (event) => {
     if (event.key === "Enter") {
       searchMovies(search); // Call the search function from the custom hook
+      console.log("Search term:", search); // Log the search term for debugging
     }
   };
 

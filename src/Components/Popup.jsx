@@ -26,6 +26,30 @@ export const Popup = ({ selected, closePopup }) => {
             </div>
             <div className="col-md-7">
               <p className="card-text">{selected.Plot}</p>
+              <p className="card-text">
+                <strong>Director:</strong> {selected.Director}
+              </p>
+              <p className="card-text">
+                <strong>Actors:</strong> {selected.Actors}
+              </p>
+              <p className="card-text">
+                <strong>Genre:</strong> {selected.Genre}{" "}
+              </p>
+              <p className="card-text">
+                <strong>Runtime:</strong> {selected.Runtime}{" "}
+              </p>
+              <p className="card-text">
+                <strong>Language:</strong> {selected.Language}{" "}
+              </p>
+              <p className="card-text">
+                <strong>Country:</strong> {selected.Country}{" "}
+              </p>
+              <p className="card-text">
+                <strong>Released:</strong> {selected.Released}{" "}
+              </p>
+              <p className="card-text">
+                <strong>Box Office:</strong> {selected.BoxOffice}{" "}
+              </p>
             </div>
           </div>
           <div className="text-center mt-4">
@@ -38,24 +62,3 @@ export const Popup = ({ selected, closePopup }) => {
     </section>
   );
 };
-
-// export const Popup = ({ selected, closePopup }) => {
-//   return (
-//     <section className='popup'>
-//       <div className='content'>
-//         <h2>
-//           {selected.Title} <span>({selected.Year})</span>
-//         </h2>
-//         <p className='rating'>Rating: {selected.imdbRating}</p>
-//         <div className='plot'>
-//           <img src={selected.Poster} alt='text' />
-
-//           <p>{selected.Plot}</p>
-//         </div>
-//         <button className='close' onClick={closePopup}>
-//           Close
-//         </button>
-//       </div>
-//     </section>
-//   );
-// };

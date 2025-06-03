@@ -16,12 +16,18 @@ export const Result = ({ result, openPopup }) => {
         />
         <div className="card-body d-flex flex-column justify-content-between">
           <h5 className="card-title text-center">{result.Title}</h5>
+          <p className="card-text text-center text-muted mb-0">{result.Year}</p>
+          <button
+            className="btn btn-outline-primary mt-3"
+            onClick={(e) => {
+              e.stopPropagation();
+              openPopup(result.imdbID);
+            }}
+          >
+            View Details
+          </button>
         </div>
       </div>
     </div>
-
-    // <div className="result" onClick={() => openPopup(result.imdbID)} ><h3>{result.Title}</h3>
-    //     <img src={result.Poster} />
-    //     </div>
   );
 };
